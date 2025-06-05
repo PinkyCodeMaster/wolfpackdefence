@@ -14,9 +14,11 @@
     "db:pull": "drizzle-kit pull",
     "db:update": "pnpm db:generate && pnpm db:migrate && pnpm db:push",
     "db:reset": "rm ./dev.db && rm -r ./src/db/migrations && pnpm db:update",
-    "auth:generate": "pnpx better-auth@latest generate"
+    "auth:generate": "pnpx @better-auth/cli generate --config ./src/lib/auth.ts --output ./src/db/schema/auth.ts -y",
+    "db:auth": "pnpm auth:generate && pnpm db:update"
   },
   "dependencies": {
+    "@better-auth/stripe": "^1.2.8",
     "@hookform/resolvers": "^5.0.1",
     "@libsql/client": "^0.15.8",
     "@radix-ui/react-accordion": "^1.2.11",
@@ -45,6 +47,8 @@
     "@radix-ui/react-toggle": "^1.1.9",
     "@radix-ui/react-toggle-group": "^1.1.10",
     "@radix-ui/react-tooltip": "^1.2.7",
+    "@uploadthing/react": "^7.3.1",
+    "better-auth": "^1.2.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
@@ -64,7 +68,9 @@
     "react-resizable-panels": "^3.0.2",
     "recharts": "^2.15.3",
     "sonner": "^2.0.5",
+    "stripe": "^18.2.1",
     "tailwind-merge": "^3.3.0",
+    "uploadthing": "^7.7.2",
     "vaul": "^1.1.2",
     "zod": "^3.25.51"
   },

@@ -1,4 +1,7 @@
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { ThemeProvider } from "@/components/theme/theme-provider";
+import { extractRouterConfig } from "uploadthing/server";
+import { fileRouter } from "@/app/api/uploadthing/core";
 import { Geist, Geist_Mono } from "next/font/google";
 import type { Metadata } from "next";
 import { Toaster } from "sonner";
@@ -79,6 +82,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
       <head />
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <NextSSRPlugin routerConfig={extractRouterConfig(fileRouter)} />
           {children}
           <Toaster />
         </ThemeProvider>
