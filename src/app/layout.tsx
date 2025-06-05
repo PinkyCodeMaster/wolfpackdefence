@@ -1,8 +1,11 @@
+import { PostHogProvider } from "@/components/providers/PostHogProvider";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { ThemeProvider } from "@/components/theme/theme-provider";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { extractRouterConfig } from "uploadthing/server";
 import { fileRouter } from "@/app/api/uploadthing/core";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Toaster } from "sonner";
 import "@/styles/globals.css";
@@ -76,16 +79,22 @@ export const metadata: Metadata = {
   category: "marketplace"
 };
 
-export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <NextSSRPlugin routerConfig={extractRouterConfig(fileRouter)} />
-          {children}
-          <Toaster />
-        </ThemeProvider>
+        <PostHogProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <NextSSRPlugin routerConfig={extractRouterConfig(fileRouter)} />
+            <Analytics />
+            <SpeedInsights />
+            {children}
+            <Toaster />
+          </ThemeProvider>
+        </PostHogProvider>
       </body>
     </html>
   );

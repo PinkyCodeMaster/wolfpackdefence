@@ -23,19 +23,19 @@
 - [x] Set up Drizzle config and a local SQLite db
 
 ## 5. Authentication
-- [ ] `pnpm install betterauth` (or correct package)
+- [x] `pnpm install betterauth` (or correct package)
 - [ ] Set up Next.js middleware for route protection
 
 ## 6. File Uploads
-- [ ] `pnpm install uploadthing`
+- [x] `pnpm install uploadthing`
 
 ## 7. Payments
-- [ ] `pnpm install stripe`
-- [ ] (Optional) `pnpm install @stripe/stripe-js` (frontend)
+- [x] `pnpm install stripe`
+- [x] (Optional) `pnpm install @stripe/stripe-js` (frontend)
 
 ## 8. Observability & Analytics
-- [ ] `pnpm install @sentry/nextjs`
-- [ ] `pnpm install posthog-js`
+- [x] `pnpm install @sentry/nextjs`
+- [x] `pnpm install posthog-js`
 - [ ] `pnpm install @vercel/analytics`
 - [ ] Add Google Analytics (via script tag or `next/script`)
 - [ ] `pnpm install betterstack` (if package exists)
