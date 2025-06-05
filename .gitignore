@@ -43,3 +43,9 @@ next-env.d.ts
 # database
 migrations/
 dev.db
+
+# Sentry Config File
+.env.sentry-build-plugin
+
+*storybook.log
+storybook-static
